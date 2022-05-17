@@ -89,5 +89,5 @@ func (this *Pokemon) getAbility() myinterface.IAbi {
 }
 
 func (this *Pokemon) getItem() myinterface.IItem {
-	return this.battle.Dex.items.getByID(this.ability)
+	return this.battle.Dex.items.getByID(this.item)
 }
