@@ -17,9 +17,7 @@ func (this *BaseAbi) IsPermanent() bool {
 }
 
 func (this *BaseAbi) onDamagingHit(battle myinterface.IBattle, damage int32, target myinterface.IPoke, source myinterface.IPoke, move myinterface.IMove) {
-	if battle.CheckMoveMakesContact(move, source, target, true) {
-		//this.damage(source.baseMaxhp/8, source, target)
-	}
+
 }
 
 type Ironbarbs struct {
@@ -35,5 +33,7 @@ func NewIronbarbs() myinterface.IAbi {
 // 当攻击方受到铁刺的伤害而濒死时，以下招式的特效不会发动：
 // 龙尾、仰投、高速旋转、虫食、啄食、清醒、清醒拍打。
 func (this *Ironbarbs) onDamagingHit(battle myinterface.IBattle, damage int32, target myinterface.IPoke, source myinterface.IPoke, move myinterface.IMove) {
-
+	if battle.CheckMoveMakesContact(move, source, target, true) {
+		//this.damage(source.baseMaxhp/8, source, target)
+	}
 }

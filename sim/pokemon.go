@@ -43,7 +43,7 @@ func (this *Pokemon) IgnoringItem() bool {
 	conditon2 := this.battle.Gen >= 5 && !this.isActive
 	//klutz 笨拙：携带物品的能力失效（包括负面效果）
 	conditon3 := this.hasAbility("klutz") && !this.getItem().IgnoreKlutz()
-	//embargo 扣押阻止对手使用携带道具。
+
 	conditon4 := this.getVolatilesEmbargo()
 	conditon5 := this.getMagicroom()
 	return (condtion1) || conditon2 || conditon3 || conditon4 || conditon5
@@ -69,8 +69,8 @@ func (this *Pokemon) ignoringAbility() bool {
 	for _, pokemon := range this.battle.getAllActive() {
 		// can't use hasAbility because it would lead to infinite recursion
 		//neutralizinggas 化学变化气体：此特性不仅能消除周围宝可梦的特性效果，还能让特性的效果变得无法发动。
-		//gastroacid 胃液：使目标陷入无特性状态
-		condtion1 := pokemon.getAbilityStateKnockedOff()
+
+		condtion1 := pokemon.getAbilityStateEnding()
 		if pokemon.ability == "neutralizinggas" && !pokemon.getVolatilesGastroacid() &&
 			!pokemon.transformed && condtion1 {
 			neutralizinggas = true
